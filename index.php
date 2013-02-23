@@ -6,29 +6,37 @@ ini_set('memory_limit','128M');
 include('simpleImage.php');
 
 $resize = true;
-$dir = "./galleries/selbstportraits/";
+$dir = "./galleries/luca-geburi/";
+$title = "Luca's Birthday";
+
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-    	<title>Caro 33 Photos</title>
+    	<title><?php echo $title; ?></title>
     	 <link rel="stylesheet" href="simplegallery.css" />
         <link rel="stylesheet" href="colorbox.css" />
         <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
         <script src="jquery.colorbox.js"></script>
        	<script>
-            jQuery(document).ready(function () {
-                jQuery('a.gallery').colorbox(
-                	{ opacity:0.8 , loop:'false' , rel:'group' , maxHeight:'95%' }
-                );
+            $(document).ready(function() {
+                $('a.gallery').each(function() {
+                    $(this).colorbox({
+                        opacity:0.8,
+                        loop:'false',
+                        rel:'group',
+                        maxHeight:'95%',
+                        maxWidth:'95%'//,
+                        //href: $(this).attr("href)
+                    });
+                });
             });
         </script>
     </head>
    <body>
-   	<h1>Carolina's Birthday Bash</h1>
-   	<p>Weitere Bilder vom Abend <a href="http://downloads.ground15.com/~intern/carolina/carolina33">hier...</a></p>
-
+   	<h1><?php echo $title; ?></h1>
+	<div id="content" class="center">
 <?
 $handle = opendir($dir);
 while (false !== ($file = readdir($handle))) {
@@ -72,6 +80,6 @@ function resizeAndSave($dir, $file, $type) {
 }
 
 ?>
-	
+		</div>
 	</body>
 </html>

@@ -1,9 +1,25 @@
 body {
 	font-family: Verdana, Arial, sans-serif;
+	color: white;
+	background-color: black;
 }
 
-.image {
-	float: left;
+h1 {
+	text-align: center;
+}
+
+.center {
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	text-align: center;
+}
+
+div.image {
+	display: inline-block;
 	margin-left: 0.8em;
 	margin-bottom: 0.8em;
+	border: 8px solid white;
+	border-radius: 2px;
+	text-align: center;
 }
