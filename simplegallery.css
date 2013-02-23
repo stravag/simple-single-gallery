@@ -1,0 +1,9 @@
+body {
+	font-family: Verdana, Arial, sans-serif;
+}
+
+.image {
+	float: left;
+	margin-left: 0.8em;
+	margin-bottom: 0.8em;
+}
