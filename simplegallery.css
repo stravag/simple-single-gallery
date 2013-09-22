@@ -8,6 +8,12 @@ h1 {
 	text-align: center;
 }
 
+img.homeicon {
+	position: fixed;
+	left: 5px;
+	top: 5px;
+}
+
 .center {
 	width: 96%;
 	margin-left: 2%;

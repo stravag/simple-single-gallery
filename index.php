@@ -6,17 +6,17 @@ ini_set('memory_limit','128M');
 include('simpleImage.php');
 
 $resize = true;
-$dir = "./galleries/luca-geburi/";
-$title = "Luca's Birthday";
+$dir = "./photos/";
+$title = "Gallery Title";
 
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
     	<title><?php echo $title; ?></title>
-    	 <link rel="stylesheet" href="simplegallery.css" />
+    	<link rel="stylesheet" href="simplegallery.css" />
         <link rel="stylesheet" href="colorbox.css" />
+        <link href="favicon.ico" rel="icon" type="image/x-icon" />
         <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
         <script src="jquery.colorbox.js"></script>
        	<script>
@@ -36,6 +36,7 @@ $title = "Luca's Birthday";
     </head>
    <body>
    	<h1><?php echo $title; ?></h1>
+   	<a href="http://www.ranil.ch"><img class="homeicon" src="home.png"></a>
 	<div id="content" class="center">
 <?
 $handle = opendir($dir);
