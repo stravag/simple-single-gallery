@@ -3,14 +3,7 @@
 //ini_set('display_errors', '1');
 ini_set('memory_limit','256M');
 
-$resize = true;
-
-/*
- * Application Settings
- */
-
-include_once('simpleImage.php');
-include_once('helper.php');
+require_once('helper.php');
 
 $CONFIG = getConfig();
 
@@ -26,7 +19,9 @@ $CONFIG = getConfig();
 	</head>
 	<body>
    		<h1><?php echo $CONFIG['title']; ?></h1>
-	   	<a href="<?php echo $CONFIG['homelink']; ?>"><img class="homeicon" src="home.png" alt="Home"></a>
+	   	<a href="<?php echo $CONFIG['homelink']; ?>">
+	   		<img class="homeicon" src="home.png" alt="Home">
+	   	</a>
 		<div id="content" class="center">
 		<?php
 			$handle = opendir($CONFIG['photoDirectory']);
@@ -34,13 +29,8 @@ $CONFIG = getConfig();
 				$extension = strtolower(substr(strrchr($file, '.'), 1)); 
 				if($extension == 'jpg') {
 					if (!strstr($file, 'thumb') && !strstr($file, 'large')) {
-						if ($resize) {
-							$newthumbfile = resizeAndSave($CONFIG['photoDirectory'], $file, 'thumb');
-							$newlargefile = resizeAndSave($CONFIG['photoDirectory'], $file, 'large');
-						}
-					
-						$large = $CONFIG['photoDirectory'] . '/large_' . $file;
-						$thumb = $CONFIG['photoDirectory'] . '/thumb_' . $file;
+						$thumb = resizeAndSave($file, 'thumb');
+						$large = resizeAndSave($file, 'large');
 					
 						echo '<div class="image">';
 						echo '<a class="gallery" href="' . $large . '" title="' . $CONFIG['title'] . '">';

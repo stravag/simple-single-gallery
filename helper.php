@@ -1,15 +1,18 @@
 <?php
 
-function resizeAndSave($dir, $file, $type) {
+require_once('simpleImage.php');
+
+function resizeAndSave($filename, $type) {
 	$CONFIG = getConfig();
 	$size = ($type == 'thumb') ? $CONFIG['thumbHeight'] : $CONFIG['largeHeight'];
 
-	$filepath = $dir . $file;
-	$newfilepath = $dir . '/' . $type . '_' . $file;
+	$origfilepath = $CONFIG['photoDirectory'] . '/' . $filename;
+	$newfilepath = $CONFIG['photoDirectory'] . '/' . $type . '_' . $filename;
 	
 	if (!file_exists($newfilepath) or $CONFIG['forceResizing']) {
+		unlink($newfilepath);
 		$img = new SimpleImage();
-		$img->load($filepath);
+		$img->load($origfilepath);
 		$img->resizeToHeight($size);
 		$img->rotate();
 		$img->save($newfilepath);
