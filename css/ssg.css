@@ -8,10 +8,20 @@ h1 {
 	text-align: center;
 }
 
+a {
+	/* Yes, this has been accounted for, but I don't consider it evil in this simple case
+	   http://outlinenone.com */
+	outline: none;
+}
+
 img.homeicon {
 	position: fixed;
 	left: 5px;
 	top: 5px;
+}
+
+img.gallery-img {
+	display: block;
 }
 
 .center {

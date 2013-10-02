@@ -34,7 +34,7 @@ $CONFIG = getConfig();
 					
 						echo '<div class="image">';
 						echo '<a class="gallery" href="' . $large . '" title="' . $CONFIG['title'] . '">';
-						echo '<img src="' . $thumb . '" />';
+						echo '<img class="gallery-img" src="' . $thumb . '" />';
 						echo '</a>';
 						echo '</div>';
 					}
