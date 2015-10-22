@@ -15,7 +15,7 @@ function resizeAndSave($filename, $type) {
 		$img->load($origfilepath);
 		$img->resizeToHeight($size);
 		$img->rotate();
-		$img->save($newfilepath);
+		$img->save($newfilepath, IMAGETYPE_JPEG, $CONFIG['compression'], null);
 	}
 	return $newfilepath;
 }
