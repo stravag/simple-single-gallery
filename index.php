@@ -24,23 +24,29 @@ $CONFIG = getConfig();
 	   	</a>
 		<div id="content" class="center">
 		<?php
+			$files = array();
 			$handle = opendir($CONFIG['photoDirectory']);
 			while (false !== ($file = readdir($handle))) {
 				$extension = strtolower(substr(strrchr($file, '.'), 1)); 
 				if($extension == 'jpg') {
 					if (!strstr($file, 'thumb') && !strstr($file, 'large')) {
-						$thumb = resizeAndSave($file, 'thumb');
-						$large = resizeAndSave($file, 'large');
-					
-						echo '<div class="image">';
-						echo '<a class="gallery" href="' . $large . '" title="' . $CONFIG['title'] . '">';
-						echo '<img class="gallery-img" src="' . $thumb . '" />';
-						echo '</a>';
-						echo '</div>';
+						array_push($files, $file);
 					}
 				}
 			}
 			closedir($handle);
+
+			sort($files);
+			foreach ($files as $file) {
+				$thumb = resizeAndSave($file, 'thumb');
+				$large = resizeAndSave($file, 'large');
+			
+				echo '<div class="image">';
+				echo '<a class="gallery" href="' . $large . '" title="' . $CONFIG['title'] . '">';
+				echo '<img class="gallery-img" src="' . $thumb . '" />';
+				echo '</a>';
+				echo '</div>';
+			}
 		?>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
